@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('desktop-wallpaper-background-midnight-train-dark-blue.jpg') ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-size: 40vh;
+    color: white;
+}
+
+#digital-clock {
+    font-family: Arial, sans-serif;
+    font-size: 120px;
+
+}
+
+    </style>
+</head>
+<body>
+    <div id="Digital-clock" ></div>
+
+    <script>
+function updateClock(){
+const now = new Date();
+let hours = now.getHours();
+const ampm = hours >=12 ? 'PM': 'AM'
+hours = hours % 12 || 12; // convert to 12-hour format
+
+const minutes = now.getMinutes().toString().padStart(2,'0');
+const seconds = now.getSeconds().toString().padStart(2,'0');
+
+const timeString = `${hours}:${minutes}:${seconds}`;
+document.getElementById('Digital-clock').textContent = timeString;
+
+}
+setInterval(updateClock,1000);
+
+updateClock();
+    
+    </script>
+</body>
+</html>
